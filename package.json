@@ -1,0 +1,19 @@
+{
+  "name": "hello-world-bot",
+  "version": "0.0.1",
+  "description": "intro test bot",
+  "main": "index.js",
+  "dependencies": {
+    "botpress": "^1.0.8",
+    "botpress-messenger": "^2.1.3",
+    "botpress-web": "1.x",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "scripts": {
+    "start": "botpress start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Russell Schmidt @octorusty",
+  "license": "Botpress Proprietary License"
+}
