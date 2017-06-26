@@ -30,3 +30,16 @@ eatme:
       - basic ass basic bitch
     typing: true
   - text: well I say {{insult}}
+
+initialGreeting:
+  - text:
+    - hullo {{user.first_name}}. Want to know your local weather?
+    - Dearest {{user.first_name}} care for a weather report?
+    - pssst want some weather forecast action?
+    - oh haiiii want some weather info?
+    - good to see you. want weather pleasure?
+    typing: true
+
+weatherStart:
+  - text:
+    - Tell me where you live

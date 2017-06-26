@@ -20,30 +20,44 @@
 */
 
 module.exports = function(bp) {
-  // Listens for a first message (this is a Regex)
-  // GET_STARTED is the first message you get on Facebook Messenger
   bp.hear(/GET_STARTED|hello|hi|test|hey|holla/i, (event, next) => {
     event.reply('#welcome') // See the file `content.yml` to see the block
-  })
 
-  // You can also pass a matcher object to better filter events
-  bp.hear({
-    type: /message|text/i,
-    text: /exit|bye|goodbye|quit|done|leave|stop/i
-  }, (event, next) => {
-    event.reply('#goodbye', {
-      // You can pass data to the UMM bloc!
-      reason: 'unknown'
+    bp.convo.start(event, convo => {
+      bp.umm.sendToUser(event.user, '#initialGreeting')
+
+      // Listens for a first message (this is a Regex)
+      // GET_STARTED is the first message you get on Facebook Messenger
+
+
+      // You can also pass a matcher object to better filter events
+      bp.hear({
+        type: /message|text/i,
+        text: /exit|bye|goodbye|quit|done|leave|stop/i
+      }, (event, next) => {
+        event.reply('#goodbye', {
+          // You can pass data to the UMM bloc!
+          reason: 'unknown'
+        })
+      })
+
+      bp.hear({
+        type: /message|text/i,
+        text: /fuck/i
+      }, (event, next) => {
+        event.reply('#eatme', {
+          insult: 'eat shit'
+        })
+      })
+
+      bp.hear({
+        type: /message|text/i,
+        text: /weather/i
+      }, (event, next) => {
+        event.reply('#weatherStart', {
+          location: 'location'
+        })
+      })
     })
   })
-
-  bp.hear({
-    type: /message|text/i,
-    text: /fuck/i
-  }, (event, next) => {
-    event.reply('#eatme', {
-      insult: 'eat shit'
-    })
-  })
-
 }
